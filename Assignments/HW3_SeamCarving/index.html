@@ -154,13 +154,7 @@
 
 											\[ O(N3^{N-1}) \]
 
-											possible seams.  We're going to have to get creative to come up with an efficient algorithm to find the one with minimum cost.  For this, we can turn to dynamic programming. Let's consider a subproblem of computing a minimum cost seam that starts at the top of an image and ends at some pixel <code>[i, j]</code>.  For this, we need solutions to the subproblems <code>[i-1, j-1]</code>, <code>[i-1, j]</code>, and <code>[i, j+1]</code>, as shown in the image below
-										</p>
-										<img src = "SeamChoices.svg">
-
-										<p>
-											The cost of the optimal seam ending at <code>[i, j]</code> is the minimum cost of seams ending at these three possibilities, pluss the energy image value at <code>[i, j]</code>.  If we remember which of the three above subproblems was the optimal, we can backtrace to extract the full seam, <b>starting at the pixel at the bottom of the image which has the lowest cost</b>.
-										</p>
+											possible seams.  We're going to have to get creative to come up with an efficient algorithm to find the one with minimum cost.  
 									
 									<h3><a name = "rgb">RGB Images And Parallel Arrays</a></h3>
 									<p>
