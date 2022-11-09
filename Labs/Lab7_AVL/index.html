@@ -64,7 +64,7 @@
 										</p>
 
 										<p>
-											Be sure that your <code>add</code> method runs in <b>O(log(N))</b> time!  As part of this, you should be careful to update your heights <b>in constant time</b>.
+											Be sure that your <code>add</code> method runs in <b>O(log(N))</b> time!  As part of this, you should be careful to <b>update your heights in constant time</b>.
 										</p>
 
 										<p>
@@ -78,7 +78,7 @@
 												Recall that the two possible <b>tree rotations</b> are defined as follows:
 											</p>
 
-											<img src = "Rotate.svg">
+											<img src = "Rotate.svg" width="100%">
 
 											<p>
 												Note how since the roots change, we return the new root so that we can recursively re-assign children just like we did when removing nodes in the <a href = "../Lab6_TreeRemoval/">last lab</a>.
@@ -102,13 +102,13 @@
 
 													if h(right) = h(left) - 2
 														if h(left.right) > h(left.left)
-															left = rotateleft(left)
-														root = rotateright(node)
+															left = rotate_ccw(left)
+														root = rotate_cw(node)
 
 													else if h(left) = h(right) - 2
 														if h(right.right) < h(right.left)
-															right = rotateright(right)
-														root = rotateleft(node)
+															right = rotate_cw(right)
+														root = rotate_ccw(node)
 
 													return root
 												]]></script>
@@ -133,7 +133,7 @@
 											<img src = "Example1/2.svg">
 
 											<p>
-												(Note that we haven't updated the height of the parent of 13 yet, so it is not correct).  At this point, we find an imbalance at 13.  By the algorithm above, we right rotate 13, and we reach a balanced tree
+												(Note that we haven't updated the height of the parent of 13 yet, so it is not correct).  At this point, we find an imbalance at 13.  By the algorithm above, we rotate clockwise about 13, and we reach a balanced tree
 											</p>
 
 											<img src = "Example1/3.svg">
@@ -156,13 +156,13 @@
 											<img src = "Example2/2.svg">
 
 											<p>
-												When we go back up to node 3, we will find it's unbalanced to the right.  We actually have to do two rotations to rebalance node 3.  First, we do a right rotation of node 6
+												When we go back up to node 3, we will find it's unbalanced to the right.  We actually have to do two rotations to rebalance node 3.  First, we do clockwise rotation about node 6
 											</p>
 
 											<img src = "Example2/3.svg">
 
 											<p>
-												Then we do a left rotation at node 3
+												Then we do a counter-clockwise rotation about node 3
 											</p>
 
 											<img src = "Example2/4.svg">
@@ -195,13 +195,13 @@
 											<img src = "Example3/3.svg">
 
 											<p>
-												We're still good with the AVL property here!  However, if we walk up one more node to the root at 10, we see there's a problem.  The left subtree has a height of 1, while the right subtree has a height of 3.  This triggers two rotations.  First, we do a right rotation of 16 since we find 16's right subtree height is less than 16's left subtree height:
+												We're still good with the AVL property here!  However, if we walk up one more node to the root at 10, we see there's a problem.  The left subtree has a height of 1, while the right subtree has a height of 3.  This triggers two rotations.  First, we do a clockwise rotation about node 16 since we find 16's right subtree height is less than 16's left subtree height:
 											</p>
 
 											<img src = "Example3/4.svg">
 
 											<p>
-												From here, we do a left rotation of 10 to yield a tree which is finally AVL:
+												From here, we do a counter-clockwise rotation about 10 to yield a tree which is finally AVL:
 											</p>
 
 											<img src = "Example3/5.svg">
